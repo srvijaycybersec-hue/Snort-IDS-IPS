@@ -73,29 +73,36 @@ Save and exit.
 
 Detects user anonymous in FTP authentication.
 
-alert tcp any any -> any 21 (msg:"FTP Anonymous Login Attempt"; sid:1000001; rev:1;)
+alert tcp any any -> $HOME_NET 21 (msg:"FTP Anonymous Login Attempt"; sid:1000001; rev:1;)
 
 Add inside:
 
 sudo nano /etc/snort/rules/local.rules
 
+---
+
+4.2 ICMP Ping Request Rule
+
+Detects user Ping Request in ICMP
+
+alert icmp any any -> $HOME_NET any (msg:" Ping Request Detected"; sid:1000002; rev:1;)
 
 ---
 
-4.2 SSH Login Attempt Rule
+4.3 SSH Login Attempt Rule
 
 Detect inbound SSH (port 22) connection attempts:
 
-alert tcp any any -> any 22 (msg:"SSH Login Attempt Detected"; sid:1000002; rev:1;)
+alert tcp any any -> $HOME_NET 22 (msg:"SSH Login Attempt Detected"; sid:1000003; rev:1;)
 
 
 ---
 
-4.3 SQL Injection Attempt Rule
+4.4 SQL Injection Attempt Rule
 
 Detect common SQLi payloads:
 
-alert tcp any any -> any 80 (msg:"SQL Injection Attempt"; flow:to_server,established; content:"' OR 1=1 --"; nocase; sid:1000003; rev:1;)
+alert tcp any any -> any 80 (msg:"SQL Injection Attempt"; flow:to_server,established; content:"' OR 1=1 --"; nocase; sid:1000004; rev:1;)
 
 For wildcard SQLi keywords:
 
