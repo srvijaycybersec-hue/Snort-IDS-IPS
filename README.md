@@ -113,9 +113,17 @@ Save the file.
 
 ---
 
-#### 5. Testing Snort Rules
+#### 5. Check and Validate the Rules
 
-5.1 Start Snort in IDS Mode
+Check and validate the rules using the following command
+
+snort -T -c /etc/snort/snort.conf  
+
+---
+
+#### 6. Testing Snort Rules
+
+6.1 Start Snort in IDS Mode
 
 sudo snort -A console -q -c /etc/snort/snort.conf -i ensp0s8
 
@@ -128,9 +136,9 @@ Use the correct interface name.
 
 ---
 
-#### 6. Triggering Each Alert
+#### 7. Triggering Each Alert
 
-6.1 Test FTP Anonymous Login Rule
+7.1 Test FTP Anonymous Login Rule
 
 From another machine or local system:
 open the terminal and type the command
@@ -144,7 +152,7 @@ FTP Anonymous Login Attempt
 
 ---
 
-6.2 Test SSH Login Rule
+7.2 Test SSH Login Rule
 
 ssh hostname@ipaddress
 
@@ -154,14 +162,14 @@ SSH Login Attempt Detected
 
 ---
 
-6.3 Test SQL injection attack Rule
+7.3 Test SQL injection attack Rule
 
 I don't test sql injection attack, because i don't have server setups in my home lab. 
 
 
 ---
 
-#### 7. Verify Snort Logs
+#### 8. Verify Snort Logs
 
 Snort logs alerts to:
 
@@ -174,19 +182,19 @@ cat /var/log/snort/alert
 
 ---
 
-#### 8. Troubleshooting
+#### 9. Troubleshooting
 
-8.1 Common Error: "Unknown rule option"
+9.1 Common Error: "Unknown rule option"
 
 Ensure syntax is correct in local.rules.
 
-8.2 "Snort can't open pcap"
+9.2 "Snort can't open pcap"
 
 Check interface permissions:
 
 sudo chmod o+r /dev/bpf*
 
-8.3 Rule not triggering
+9.3 Rule not triggering
 
 Verify Snort is running on correct interface.
 
@@ -198,7 +206,7 @@ Check flow keywords (remove flow if needed).
 
 ---
 
-#### 9. Stopping Snort
+#### 10. Stopping Snort
 
 Press:
 
@@ -207,7 +215,7 @@ CTRL + C
 
 ---
 
-#### 10. Conclusion
+#### 11. Conclusion
 
 You now have a fully functional Snort 2.9.20 setup with custom rules for:
 
