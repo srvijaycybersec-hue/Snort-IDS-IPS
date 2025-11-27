@@ -106,7 +106,7 @@ Save the file.
 
 ---
 
-5. Testing Snort Rules
+#### 5. Testing Snort Rules
 
 5.1 Start Snort in IDS Mode
 
