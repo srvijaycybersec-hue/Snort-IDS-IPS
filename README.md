@@ -1,5 +1,10 @@
+#### Internship Organization : Infotact Solutions
+#### Internship Project      : Cyber Security/Snort IDS-IPS Project
+#### Duration                : 3 Months
 
-Snort 2.9.20 – Installation, Configuration, and Rule Testing Guide
+
+
+## Snort 2.9.20 – Installation, Configuration, and Rule Testing Guide
 
 Overview
 
@@ -7,7 +12,7 @@ This document provides a complete walkthrough for installing Snort 2.9.20, confi
 
 ---
 
-1. Install Dependencies
+# 1. Install Dependencies
 
 sudo apt update
 sudo apt install -y build-essential autotools-dev libdumbnet-dev \
