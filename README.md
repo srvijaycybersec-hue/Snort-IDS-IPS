@@ -1,6 +1,6 @@
-#### Internship Organization : Infotact Solutions
-#### Internship Project      : Cyber Security/Snort IDS-IPS Project
-#### Duration                : 3 Months
+## Internship Organization : Infotact Solutions
+## Internship Project      : Cyber Security/Snort IDS-IPS Project
+## Duration                : 3 Months
 
 
 
@@ -12,7 +12,7 @@ This document provides a complete walkthrough for installing Snort 2.9.20, confi
 
 ---
 
-# 1. Install Dependencies
+#### 1. Install Dependencies
 
 sudo apt update
 sudo apt install -y build-essential autotools-dev libdumbnet-dev \
@@ -23,7 +23,7 @@ flex bison
 
 ---
 
-2. Download and Install Snort 2.9.20
+#### 2. Download and Install Snort 2.9.20
 
 2.1 Install Snort directly on your VMs. I used Ubuntu vm to install snort using following command
 
@@ -41,7 +41,7 @@ Snort Version 2.9.20
 
 ---
 
-3. Basic Snort Configuration
+#### 3. Basic Snort Configuration
 
 3.1 Edit snort.conf
 
@@ -66,7 +66,7 @@ Save and exit.
 
 ---
 
-4. Custom Rules Creation
+#### 4. Custom Rules Creation
 
 4.1 FTP Anonymous Login Detection Rule
 
@@ -120,7 +120,7 @@ Use the correct interface name.
 
 ---
 
-6. Triggering Each Alert
+#### 6. Triggering Each Alert
 
 6.1 Test FTP Anonymous Login Rule
 
@@ -153,7 +153,7 @@ I don't test sql injection attack, because i don't have server setups in my home
 
 ---
 
-7. Verify Snort Logs
+#### 7. Verify Snort Logs
 
 Snort logs alerts to:
 
@@ -166,7 +166,7 @@ cat /var/log/snort/alert
 
 ---
 
-8. Troubleshooting
+#### 8. Troubleshooting
 
 8.1 Common Error: "Unknown rule option"
 
@@ -190,7 +190,7 @@ Check flow keywords (remove flow if needed).
 
 ---
 
-9. Stopping Snort
+#### 9. Stopping Snort
 
 Press:
 
@@ -199,7 +199,7 @@ CTRL + C
 
 ---
 
-10. Conclusion
+#### 10. Conclusion
 
 You now have a fully functional Snort 2.9.20 setup with custom rules for:
 
