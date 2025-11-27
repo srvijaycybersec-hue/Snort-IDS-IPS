@@ -50,9 +50,9 @@ sudo nano /etc/snort/snort.conf
 
 Verify and update:
 
-var RULE_PATH /etc/snort/rules
-var SO_RULE_PATH /etc/snort/so_rules
-var PREPROC_RULE_PATH /etc/snort/preproc_rules
+var RULE_PATH /etc/snort/rules.
+var SO_RULE_PATH /etc/snort/so_rules.
+var PREPROC_RULE_PATH /etc/snort/preproc_rules.
 
 Enable local rules:
 
