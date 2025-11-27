@@ -115,14 +115,14 @@ Use the correct interface name.
 
 ---
 
-8. Triggering Each Alert
+6. Triggering Each Alert
 
-8.1 Test FTP Anonymous Login Rule
+6.1 Test FTP Anonymous Login Rule
 
 From another machine or local system:
+open the terminal and type the command
+ftp hostname@ipaddress (example:- ftp anonymous@192.168.56.101
 
-ftp localhost
-Name: anonymous
 
 Snort output should show:
 
@@ -131,35 +131,24 @@ FTP Anonymous Login Attempt
 
 ---
 
-8.2 Test SSH Login Rule
+6.2 Test SSH Login Rule
 
-ssh user@localhost
+ssh hostname@ipaddress
 
 Snort output should show:
 
 SSH Login Attempt Detected
 
-
 ---
 
-8.3 Test SQL Injection Rule
+6.3 Test SQL injection attack Rule
 
-Send a malicious HTTP request:
-
-curl "http://localhost/?id=' OR 1=1 --"
-
-Snort output should show:
-
-SQL Injection Attempt
-
-Or for generic keyword tests:
-
-curl "http://localhost/?search=union select"
+I don't test sql injection attack, because i don't have server setups in my home lab. 
 
 
 ---
 
-9. Verify Snort Logs
+7. Verify Snort Logs
 
 Snort logs alerts to:
 
@@ -172,19 +161,19 @@ cat /var/log/snort/alert
 
 ---
 
-10. Troubleshooting
+8. Troubleshooting
 
-10.1 Common Error: "Unknown rule option"
+8.1 Common Error: "Unknown rule option"
 
 Ensure syntax is correct in local.rules.
 
-10.2 "Snort can't open pcap"
+8.2 "Snort can't open pcap"
 
 Check interface permissions:
 
 sudo chmod o+r /dev/bpf*
 
-10.3 Rule not triggering
+8.3 Rule not triggering
 
 Verify Snort is running on correct interface.
 
@@ -196,7 +185,7 @@ Check flow keywords (remove flow if needed).
 
 ---
 
-11. Stopping Snort
+9. Stopping Snort
 
 Press:
 
@@ -205,15 +194,14 @@ CTRL + C
 
 ---
 
-12. Conclusion
+10. Conclusion
 
 You now have a fully functional Snort 2.9.20 setup with custom rules for:
 
-FTP anonymous login detection
+Anonymous ping request detection
 
 SSH login attempt detection
 
-SQL injection detection
 
 
 All alerts can be observed live in console mode or via Snort log files.
