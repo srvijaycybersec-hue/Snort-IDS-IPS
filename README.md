@@ -238,6 +238,8 @@ Anonymous ping request detection
 
 SSH login attempt detection
 
+FTP anonymous login attempt detection
 
+SQL injection attempt detection
 
 All alerts can be observed live in console mode or via Snort log files.
