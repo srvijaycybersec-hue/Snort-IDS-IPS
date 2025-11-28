@@ -9,7 +9,7 @@
 
 Overview
 
-This document provides a complete walkthrough for installing Snort 2.9.20, configuring it in IDS mode, creating custom detection rules for anonymous ping  request, SSH login attempts, and SQL Injection attempts, and validating whether alerts are triggered.
+This document provides a complete walkthrough for installing Snort 2.9.20, configuring it in IDS mode, creating custom detection rules for anonymous ping  request, SSH login attempts, FTP anonymous login attempt and SQL Injection attempts, and validating whether alerts are triggered.
 
 ---
 
@@ -102,28 +102,28 @@ alert tcp any any -> $HOME_NET 22 (msg:"SSH Login Attempt Detected"; sid:1000002
 
 Detect common SQLi payloads:
 
-SQL Injection Rule 1
+SQL Injection Rule 1  
 alert tcp any any -> $HOME_NET 80 (msg:"SQL Injection Attempt"; content:"' or '1'='1"; nocase; sid:1000003; rev:1;)
 
 
-SQL Injection Rule 2
+SQL Injection Rule 2  
 alert tcp any any -> $HOME_NET 80 (msg:"SQL Injection Attempt"; content:" ' order by *"; nocase; sid:1000004; rev:1;)
 
 
-SQL Injection Rule 3
+SQL Injection Rule 3  
 alert tcp any any -> $HOME_NET 80 (msg:"SQL Injection Attempt"; content:"union"; nocase; sid:1000005; rev:1;)
 
 
-SQL Injection Rule 4
+SQL Injection Rule 4  
 alert tcp any any -> $HOME_NET 80 (msg:"SQL Injection Attempt"; content:"select"; nocase; sid:1000006; rev:1;)
 
-SQL Injection Rule 5
+SQL Injection Rule 5  
 alert tcp any any -> $HOME_NET 80 (msg:"SQL Injection Attempt"; content:"' and '1'='1"; nocase; sid:1000007; rev:1;)
 
-SQL Injection Rule 6
+SQL Injection Rule 6  
 alert tcp any any -> $HOME_NET 80 (msg:"SQL Injection Attempt"; content:"version()"; nocase; sid:1000008; rev:1;)
 
-SQL Injection Rule 7
+SQL Injection Rule 7  
 alert tcp any any -> $HOME_NET 80 (msg:"SQL Injection Attempt"; content:"sleep"; nocase; sid:1000009; rev:1;)
 
 ---
