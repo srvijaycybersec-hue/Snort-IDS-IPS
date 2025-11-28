@@ -73,7 +73,7 @@ Save and exit.
 
 Detects user anonymous in FTP authentication.
 
-alert tcp any any -> $HOME_NET 21 (msg:"FTP Anonymous Login Attempt"; sid:1000001; rev:1;)
+alert tcp any any -> $HOME_NET 21 (msg:"FTP Anonymous Login Attempt"; content:"USER anonymous"; sid:1000010; rev:1;)
 
 Add inside:
 
@@ -85,7 +85,7 @@ sudo nano /etc/snort/rules/local.rules
 
 Detects user Ping Request in ICMP
 
-alert icmp any any -> $HOME_NET any (msg:" Ping Request Detected"; sid:1000002; rev:1;)
+alert icmp any any -> $HOME_NET any (msg:"ping request Detected"; sid:1000001; rev:1;)
 
 ---
 
@@ -93,7 +93,7 @@ alert icmp any any -> $HOME_NET any (msg:" Ping Request Detected"; sid:1000002; 
 
 Detect inbound SSH (port 22) connection attempts:
 
-alert tcp any any -> $HOME_NET 22 (msg:"SSH Login Attempt Detected"; sid:1000003; rev:1;)
+alert tcp any any -> $HOME_NET 22 (msg:"SSH Login Attempt Detected"; sid:1000002; rev:1;)
 
 
 ---
@@ -102,14 +102,29 @@ alert tcp any any -> $HOME_NET 22 (msg:"SSH Login Attempt Detected"; sid:1000003
 
 Detect common SQLi payloads:
 
-alert tcp any any -> any 80 (msg:"SQL Injection Attempt"; flow:to_server,established; content:"' OR 1=1 --"; nocase; sid:1000004; rev:1;)
+SQL Injection Rule 1
+alert tcp any any -> $HOME_NET 80 (msg:"SQL Injection Attempt"; content:"' or '1'='1"; nocase; sid:1000003; rev:1;)
 
-For wildcard SQLi keywords:
 
-alert tcp any any -> any 80 (msg:"SQL Injection Keyword Detected"; flow:to_server,established; pcre:"/(\bunion\b|\bselect\b|\bdrop\b|\binsert\b|\bor\b|\band\b)/i"; sid:1000004; rev:1;)
+SQL Injection Rule 2
+alert tcp any any -> $HOME_NET 80 (msg:"SQL Injection Attempt"; content:" ' order by *"; nocase; sid:1000004; rev:1;)
 
-Save the file.
 
+SQL Injection Rule 3
+alert tcp any any -> $HOME_NET 80 (msg:"SQL Injection Attempt"; content:"union"; nocase; sid:1000005; rev:1;)
+
+
+SQL Injection Rule 4
+alert tcp any any -> $HOME_NET 80 (msg:"SQL Injection Attempt"; content:"select"; nocase; sid:1000006; rev:1;)
+
+SQL Injection Rule 5
+alert tcp any any -> $HOME_NET 80 (msg:"SQL Injection Attempt"; content:"' and '1'='1"; nocase; sid:1000007; rev:1;)
+
+SQL Injection Rule 6
+alert tcp any any -> $HOME_NET 80 (msg:"SQL Injection Attempt"; content:"version()"; nocase; sid:1000008; rev:1;)
+
+SQL Injection Rule 7
+alert tcp any any -> $HOME_NET 80 (msg:"SQL Injection Attempt"; content:"sleep"; nocase; sid:1000009; rev:1;)
 
 ---
 
